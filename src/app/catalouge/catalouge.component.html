@@ -11,7 +11,7 @@
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-buttons slot="start">
+          <ion-buttons slot="start" >
             <ion-button (click)="cancel()">Cancel</ion-button>
           </ion-buttons>
           <ion-title>Filters</ion-title>
@@ -34,10 +34,9 @@
         <ion-item>
           <ion-col><ion-title>Manufacturer</ion-title></ion-col>
           <ion-col>
-          <ion-row><ion-checkbox>BNE</ion-checkbox></ion-row>
-          <ion-row><ion-checkbox>Lntei</ion-checkbox></ion-row>
-          <ion-row><ion-checkbox>Commqual</ion-checkbox></ion-row>
-          <ion-row><ion-checkbox>Aidivn</ion-checkbox></ion-row>
+            <ion-list>
+              <ion-checkbox *ngFor="let check of manufacturers" [checked]="true" (click)="flipManbool(manufacturers.indexOf(check))">{{ check }}</ion-checkbox>
+            </ion-list>
         </ion-col>
         </ion-item>
         <ion-item>
@@ -68,19 +67,33 @@
       <ion-grid>
         <ion-row>
           <ion-col *ngFor="let item of searchCards | filter:searchTerm" size="12" sizeSm="4">
-            <ion-card>
+            <ion-card style=" height: 100%; width: 95%;">
               <ion-card-content>
-                <div style="text-align: center">
-                  <img src={{item.imgSrc}}>
-                  <p>{{item.productId}}</p>
-                  <p>{{item.productName}}</p>
-                  <p>{{item.manufacturer}}</p>
-                  <p>{{item.description}}</p>
-                  <p>{{item.listPrice}}</p>
-                  <p>{{item.noLongerAvailable}}</p>
-                </div>
-              </ion-card-content>
-              <ion-button style="align-self: center;" (click)="addToCart(item)">Add to cart</ion-button>
+                  <img src="../../assets/images/banner.jpeg">
+                  <ion-grid style="margin: 8px; font-size: x-large; text-wrap: wrap;">
+                    <!-- <ion-row>
+                      <ion-col style="text-align: Left">Manufacturer Product Number:</ion-col>
+                      <ion-col style="text-align: right">{{item.ProductID}}</ion-col>
+                    </ion-row> -->
+                    <ion-row>
+                      <ion-col style="text-align: center">{{item.ProductName}}</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col style="text-align: Left">Manufacturer: </ion-col>
+                      <ion-col style="text-align: right">{{item.Manufacturer}}</ion-col>
+                    </ion-row>
+                    <!-- move this to a modal? -->
+                    <!-- <ion-row>
+                      <ion-col style="text-align: Left">Manufacturer Description: </ion-col>
+                      <ion-col style="text-align: right">{{item.Description}}</ion-col>
+                    </ion-row> -->
+                    <ion-row>
+                      <ion-col style="text-align: Left">Price:</ion-col>
+                      <ion-col style="text-align: right">{{(item.ListPrice).toFixed(2)}}</ion-col>
+                    </ion-row>
+                    <ion-row style="text-align: center;"><ion-col><ion-button (click)="openModal()">Show Details</ion-button></ion-col></ion-row>
+                  </ion-grid>
+              </ion-card-content>    
             </ion-card>
           </ion-col>
         </ion-row>

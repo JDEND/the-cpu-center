@@ -13,245 +13,166 @@
       <ion-title size="large">Featured</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-grid>
+  <ion-grid class="ion-text-center">
     <ion-row>
       <ion-col style="text-align: center;">
         <img height="65%" width="auto" src="..\..\assets\images\banner.jpeg">
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <ion-header>
-          <ion-title  style="background-color: aliceblue; text-align: center; color: black;">Hot Sellers!</ion-title>
+      <ion-col style="display: flex; align-items: center; justify-content: center; height: 100%;">
+        <ion-header style="max-width: 75%; align-items: center; justify-content: center;">
+          <ion-title style="background-color: aliceblue; text-align: center; color: black;"><h2>Hot Sellers!</h2></ion-title>          
         </ion-header>
       </ion-col>
     </ion-row>
+    <!-- Displays for the different sales/fast moving items/last chance items -->
+    <!-- I thought about using an ngif here to not display the discount and slash through the price
+         if the discount was 0%, but i thought leaving it was funnier, because it reminds me of those
+         knock-off product websites where they try to make it look like they're giving you a huge
+         discount on name brand items, but they're actually just selling them at msrp marked down from
+         some huge amount. may add in the future. -->
     <ion-row>
       <ion-col>
         <swiper-container [modules]="swiperModules" [slidesPerView]="3" [loop]="true">
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
+          <swiper-slide *ngFor="let item of fastCards">
+            <ion-card style=" height: 100%; width: 95%;">
+              <img height="65%" width="auto" src="..\..\assets\images\banner.jpeg">
+              <ion-grid style="margin: 8px; font-size: x-large; text-wrap: wrap;">
+                <ion-row>
+                  <ion-col style="text-align: center;">{{item.ProductName}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: center;">Now {{(item.Discount *100).toFixed(2)}}% Off!!</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;">Price: </ion-col>
+                  <ion-col style="text-align: right;"><s>${{item.ListPrice}}</s> ${{(item.ListPrice * (1 - item.Discount)).toFixed(2)}}</ion-col>
+                </ion-row>
+                <ion-row style="text-align: center;"><ion-col><ion-button (click)="showDetails(item)">Show Details</ion-button></ion-col></ion-row>
+              </ion-grid>
             </ion-card>
           </swiper-slide>
         </swiper-container>
       </ion-col> 
     </ion-row>
     <ion-row>
-      <ion-col>
-        <ion-header>
-          <ion-title  style="background-color: aliceblue; text-align: center; color: black;">Get it before its gone!</ion-title>
+      <ion-col style="display: flex; align-items: center; justify-content: center; height: 100%;">
+        <ion-header style="max-width: 75%; align-items: center; justify-content: center;">
+          <ion-title  style="background-color: aliceblue; text-align: center; color: black;"><h2>Get it before its gone!</h2></ion-title>
         </ion-header>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <swiper-container [modules]="swiperModules" [slidesPerView]="3" [loop]="true">
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
+          <swiper-slide *ngFor="let item of lowCards">
+            <ion-card style=" height: 100%; width: 95%;">
+              <img height="65%" width="auto" src="..\..\assets\images\banner.jpeg">
+              <ion-grid style="margin: 8px; font-size: x-large; text-wrap: wrap;">
+                <ion-row>
+                  <ion-col style="text-align: center;">{{item.ProductName}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: center;">Now {{(item.Discount *100).toFixed(2)}}% Off!!</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;">Price: </ion-col>
+                  <ion-col style="text-align: right;"><s>${{item.ListPrice}}</s> ${{(item.ListPrice * (1 - item.Discount)).toFixed(2)}}</ion-col>
+                </ion-row>
+                <ion-row style="text-align: center;"><ion-col><ion-button (click)="showDetails(item)">Show Details</ion-button></ion-col></ion-row>
+              </ion-grid>
             </ion-card>
           </swiper-slide>
         </swiper-container>
       </ion-col> 
     </ion-row>
     <ion-row>
-      <ion-col>
-        <ion-header>
-          <ion-title  style="background-color: aliceblue; text-align: center; color: black;">New Arrivals!</ion-title>
+      <ion-col style="display: flex; align-items: center; justify-content: center; height: 100%;">
+        <ion-header style="max-width: 75%; align-items: center; justify-content: center;">
+          <ion-title  style="background-color: aliceblue; text-align: center; color: black;"><h2>New Arrivals!</h2></ion-title>
         </ion-header>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <swiper-container [modules]="swiperModules" [slidesPerView]="3" [loop]="true">
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
+          <swiper-slide *ngFor="let item of newCards">
+            <ion-card style=" height: 100%; width: 95%;">
+              <img height="65%" width="auto" src="..\..\assets\images\banner.jpeg">
+              <ion-grid style="margin: 8px; font-size: x-large; text-wrap: wrap;">
+                <ion-row>
+                  <ion-col style="text-align: center;">{{item.ProductName}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: center;">Now {{(item.Discount *100).toFixed(2)}}% Off!!</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;">Price: </ion-col>
+                  <ion-col style="text-align: right;"><s>${{item.ListPrice}}</s> ${{(item.ListPrice * (1 - item.Discount)).toFixed(2)}}</ion-col>
+                </ion-row>
+                <ion-row style="text-align: center;"><ion-col><ion-button (click)="showDetails(item)">Show Details</ion-button></ion-col></ion-row>
+              </ion-grid>
             </ion-card>
           </swiper-slide>
         </swiper-container>
       </ion-col> 
     </ion-row>
     <ion-row>
-      <ion-col>
-        <ion-header>
-          <ion-title  style="background-color: aliceblue; text-align: center; color: black;">Sales!</ion-title>
+      <ion-col style="display: flex; align-items: center; justify-content: center; height: 100%;">
+        <ion-header style="max-width: 75%; align-items: center; justify-content: center;">
+          <ion-title  style="background-color: aliceblue; text-align: center; color: black;"><h2>Sales!</h2></ion-title>
         </ion-header>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <swiper-container [modules]="swiperModules" [slidesPerView]="3" [loop]="true">
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-            </ion-card>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-card>
-              <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
+          <swiper-slide *ngFor="let item of saleCards">
+            <ion-card style=" height: 100%; width: 95%;">
+              <img height="65%" width="auto" src="..\..\assets\images\banner.jpeg">
+              <ion-grid style="margin: 8px; font-size: x-large; text-wrap: wrap;">
+                <ion-row>
+                  <ion-col style="text-align: center;">{{item.ProductName}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: center;">Now {{(item.Discount *100).toFixed(2)}}% Off!!</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;">Price: </ion-col>
+                  <ion-col style="text-align: right;"><s>${{item.ListPrice}}</s> ${{(item.ListPrice * (1 - item.Discount)).toFixed(2)}}</ion-col>
+                </ion-row>
+                <ion-row style="text-align: center;"><ion-col><ion-button (click)="showDetails(item)">Show Details</ion-button></ion-col></ion-row>
+              </ion-grid>
             </ion-card>
           </swiper-slide>
         </swiper-container>
         <ion-row>
-          <ion-col>
-            <ion-header>
-              <ion-title  style="background-color: aliceblue; text-align: center; color: black;">Last Chance Buys!</ion-title>
+          <ion-col style="display: flex; align-items: center; justify-content: center; height: 100%;">
+            <ion-header style="max-width: 75%; align-items: center; justify-content: center;">
+              <ion-title  style="background-color: aliceblue; text-align: center; color: black;"><h2>Last Chance Buys!</h2></ion-title>
             </ion-header>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <swiper-container [modules]="swiperModules" [slidesPerView]="3" [loop]="true">
-              <swiper-slide>
-                <ion-card>
-                  <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-                </ion-card>
-              </swiper-slide>
-              <swiper-slide>
-                <ion-card>
-                  <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-                </ion-card>
-              </swiper-slide>
-              <swiper-slide>
-                <ion-card>
-                  <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-                </ion-card>
-              </swiper-slide>
-              <swiper-slide>
-                <ion-card>
-                  <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-                </ion-card>
-              </swiper-slide>
-              <swiper-slide>
-                <ion-card>
-                  <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-                </ion-card>
-              </swiper-slide>
-              <swiper-slide>
-                <ion-card>
-                  <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
-                </ion-card>
-              </swiper-slide>
-              <swiper-slide>
-                <ion-card>
-                  <img height="35%" width="auto" src="..\..\assets\images\banner.jpeg">
+              <swiper-slide *ngFor="let item of lastCards">
+                <ion-card style=" height: 100%; width: 95%;">
+                  <img height="65%" width="auto" src="..\..\assets\images\banner.jpeg">
+                  <ion-grid style="margin: 8px; font-size: x-large; text-wrap: wrap;">
+                    <ion-row>
+                      <ion-col style="text-align: center;">{{item.ProductName}}</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col style="text-align: center;">Now {{(item.Discount *100).toFixed(2)}}% Off!!</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col style="text-align: left;">Price: </ion-col>
+                      <ion-col style="text-align: right;"><s>${{item.ListPrice}}</s> ${{(item.ListPrice * (1 - item.Discount)).toFixed(2)}}</ion-col>
+                    </ion-row>
+                    <ion-row style="text-align: center;"><ion-col><ion-button (click)="showDetails(item)">Show Details</ion-button></ion-col></ion-row>
+                  </ion-grid>
                 </ion-card>
               </swiper-slide>
             </swiper-container>

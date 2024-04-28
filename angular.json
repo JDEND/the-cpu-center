@@ -18,6 +18,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "sourceMap": true,
+            "optimization": false,
+            "aot": false,
+            "buildOptimizer": false,
             "outputPath": "www",
             "index": "src/index.html",
             "main": "src/main.ts",

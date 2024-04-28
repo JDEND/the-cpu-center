@@ -5,6 +5,7 @@ import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonN
 import { addIcons } from 'ionicons';
 import { bookSharp, cart, home, newspaper, personCircle, star } from 'ionicons/icons';
 import { register } from 'swiper/element/bundle';
+import './details-modal/details-modal.component';
 
 
 
