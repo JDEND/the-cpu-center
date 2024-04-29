@@ -1,16 +1,69 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+      <ion-button color="medium" (click)="cancel()">X</ion-button>
     </ion-buttons>
-    <ion-title>Welcome</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
-    </ion-buttons>
+    <ion-title>{{detail.ProductName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-input labelPlacement="stacked" label="Enter your name" [(ngModel)]="name" placeholder="Your name"></ion-input>
-  </ion-item>
+  <ion-grid style="margin: 20px; font-size: x-large; text-wrap: wrap; padding-bottom: 40px;">
+    <ion-row><ion-col><img src="../../assets/images/banner.jpeg"></ion-col></ion-row>
+    <ion-row>
+      <ion-col style="text-align: center">{{detail.ProductName}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: Left">Manufacturer: </ion-col>
+      <ion-col style="text-align: right">{{detail.Manufacturer}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: Left">Manufacturer Description: </ion-col>
+      <ion-col style="text-align: right">{{detail.Description}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: Left">Manufacturer part number:</ion-col>
+      <ion-col style="text-align: right">{{detail.ProductID}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: Left">Product type:</ion-col>
+      <ion-col style="text-align: right">{{detail.ProductType}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: Left">Release Date:</ion-col>
+      <ion-col style="text-align: right">{{detail.DateAdded}}</ion-col>
+    </ion-row>     
+    <ion-row>
+      <ion-col style="text-align: Left">Price:</ion-col>
+      <ion-col style="text-align: right">{{(detail.ListPrice).toFixed(2)}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: Left">Current Discount:</ion-col>
+      <ion-col style="text-align: right">{{(detail.Discount * 100).toFixed(2)}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: Left">Discounted Price:</ion-col>
+      <ion-col style="text-align: right">{{(detail.ListPrice * (1-detail.Discount)).toFixed(2)}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: Left">Current quantity in stock:</ion-col>
+      <ion-col style="text-align: right">{{detail.AvailableStock}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-button>Add to cart</ion-button>
+      </ion-col>
+      <ion-col style="text-align: right; align-items: right;">
+        <ion-button>+</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-textarea label="Qty" fill="outline" labelPlacement="floating" placeholder="Enter text"></ion-textarea>
+      </ion-col>
+      <ion-col>
+        <ion-button>-</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button style="text-align: center;"><ion-icon name="star-outline"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

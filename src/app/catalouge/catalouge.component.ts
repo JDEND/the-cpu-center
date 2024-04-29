@@ -131,9 +131,10 @@ export class CatalougeComponent  implements OnInit {
     }
   }
 
-  async openModal() {
+  async openModal(item : any) {
     const detailsModal = await this.modalCtrl.create({
       component: DetailsModalComponent,
+      componentProps: {detail: item}
     });
     detailsModal.present()
 

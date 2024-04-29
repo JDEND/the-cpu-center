@@ -49,7 +49,7 @@
                   <ion-col style="text-align: left;">Price: </ion-col>
                   <ion-col style="text-align: right;"><s>${{item.ListPrice}}</s> ${{(item.ListPrice * (1 - item.Discount)).toFixed(2)}}</ion-col>
                 </ion-row>
-                <ion-row style="text-align: center;"><ion-col><ion-button (click)="showDetails(item)">Show Details</ion-button></ion-col></ion-row>
+                <ion-row style="text-align: center;"><ion-col><ion-button (click)="openModal(item)">Show Details</ion-button></ion-col></ion-row>
               </ion-grid>
             </ion-card>
           </swiper-slide>
@@ -80,7 +80,7 @@
                   <ion-col style="text-align: left;">Price: </ion-col>
                   <ion-col style="text-align: right;"><s>${{item.ListPrice}}</s> ${{(item.ListPrice * (1 - item.Discount)).toFixed(2)}}</ion-col>
                 </ion-row>
-                <ion-row style="text-align: center;"><ion-col><ion-button (click)="showDetails(item)">Show Details</ion-button></ion-col></ion-row>
+                <ion-row style="text-align: center;"><ion-col><ion-button (click)="openModal(item)">Show Details</ion-button></ion-col></ion-row>
               </ion-grid>
             </ion-card>
           </swiper-slide>
@@ -111,7 +111,7 @@
                   <ion-col style="text-align: left;">Price: </ion-col>
                   <ion-col style="text-align: right;"><s>${{item.ListPrice}}</s> ${{(item.ListPrice * (1 - item.Discount)).toFixed(2)}}</ion-col>
                 </ion-row>
-                <ion-row style="text-align: center;"><ion-col><ion-button (click)="showDetails(item)">Show Details</ion-button></ion-col></ion-row>
+                <ion-row style="text-align: center;"><ion-col><ion-button (click)="openModal(item)">Show Details</ion-button></ion-col></ion-row>
               </ion-grid>
             </ion-card>
           </swiper-slide>
@@ -142,7 +142,7 @@
                   <ion-col style="text-align: left;">Price: </ion-col>
                   <ion-col style="text-align: right;"><s>${{item.ListPrice}}</s> ${{(item.ListPrice * (1 - item.Discount)).toFixed(2)}}</ion-col>
                 </ion-row>
-                <ion-row style="text-align: center;"><ion-col><ion-button (click)="showDetails(item)">Show Details</ion-button></ion-col></ion-row>
+                <ion-row style="text-align: center;"><ion-col><ion-button (click)="openModal(item)">Show Details</ion-button></ion-col></ion-row>
               </ion-grid>
             </ion-card>
           </swiper-slide>

@@ -91,7 +91,7 @@
                       <ion-col style="text-align: Left">Price:</ion-col>
                       <ion-col style="text-align: right">{{(item.ListPrice).toFixed(2)}}</ion-col>
                     </ion-row>
-                    <ion-row style="text-align: center;"><ion-col><ion-button (click)="openModal()">Show Details</ion-button></ion-col></ion-row>
+                    <ion-row style="text-align: center;"><ion-col><ion-button (click)="openModal(item)">Show Details</ion-button></ion-col></ion-row>
                   </ion-grid>
               </ion-card-content>    
             </ion-card>
