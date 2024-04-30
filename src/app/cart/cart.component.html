@@ -20,15 +20,28 @@
         <ion-col  sizeSm="4">
           <ion-card *ngFor="let item of currentCart">
             <ion-card-content>
-              <div style="text-align: center">
-                <img src={{item.imgSrc}}>
-                <p>{{item.productId}}</p>
-                <p>{{item.productName}}</p>
-                <p>{{item.manufacturer}}</p>
-                <p>{{item.description}}</p>
-                <p>{{item.listPrice}}</p>
-                <p>{{item.noLongerAvailable}}</p>
-              </div>
+                <img height="65%" width="auto" src="..\..\assets\images\banner.jpeg">
+                <ion-grid style="margin: 8px; font-size: x-large; text-wrap: wrap;">
+                  <ion-row>
+                    <ion-col style="text-align: center;">{{item.ProductName}}</ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col style="text-align: left;">Quantity: </ion-col>
+                    <ion-col style="text-align: right;">{{item.PurchaseQuantity}}</ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col style="text-align: center;">{{(item.Discount *100).toFixed(2)}}% Discount</ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col style="text-align: left;">Price: </ion-col>
+                    <ion-col style="text-align: right;">${{(item.ListPrice * item.PurchaseQuantity).toFixed(2)}}</ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col style="text-align: left;">Discounted Price: </ion-col>
+                    <ion-col style="text-align: right;">${{((item.ListPrice * item.PurchaseQuantity) * (1 - item.Discount)).toFixed(2)}}</ion-col>
+                  </ion-row>
+                  <ion-row style="text-align: center;"><ion-col><ion-button (click)="openModal(item)">Show Details</ion-button></ion-col></ion-row>
+                </ion-grid>
             </ion-card-content>
             <ion-button style="align-self: center;" color="danger" (click)="DeleteItem(item)"><ion-icon name="Trash"></ion-icon></ion-button>
           </ion-card>

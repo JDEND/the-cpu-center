@@ -50,16 +50,16 @@
     </ion-row>
     <ion-row>
       <ion-col style="text-align: center;">
-        <ion-button>Add to cart</ion-button>
+        <ion-button [disabled]="hide === true" (click)="addCart()">Add to cart</ion-button>
       </ion-col>
       <ion-col style="text-align: right; align-items: right;">
-        <ion-button>+</ion-button>
+        <ion-button [disabled]="hide === true" (click)="addQuant()">+</ion-button>
       </ion-col>
       <ion-col>
-        <ion-textarea label="Qty" fill="outline" labelPlacement="floating" placeholder="Enter text"></ion-textarea>
+        <ion-input [disabled]="hide === true" clearOnEdit="true" inputmode="numeric" type="number" [(ngModel)]="itemQuantity" label="Qty" labelPlacement="floating" placeholder="Enter text"></ion-input>
       </ion-col>
       <ion-col>
-        <ion-button>-</ion-button>
+        <ion-button [disabled]="hide === true" (click)="subQuant()">-</ion-button>
       </ion-col>
       <ion-col>
         <ion-button style="text-align: center;"><ion-icon name="star-outline"></ion-icon></ion-button>

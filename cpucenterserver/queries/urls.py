@@ -9,5 +9,6 @@ urlpatterns = [
     path("lowStock", views.lowStock),
     path("newArrival", views.newArrival),
     path("sale", views.sale),
-    path("lastChance", views.lastChance)
+    path("lastChance", views.lastChance),
+    path("getNews", views.getNews)
 ]

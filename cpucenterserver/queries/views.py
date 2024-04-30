@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 import json
 from django.db import connection
+from newsapi import NewsApiClient
 
 cursor = connection.cursor()
 
@@ -61,3 +62,27 @@ def lastChance(request):
        cursor.execute('EXEC [dbo].[sp_lastChanceBuys]')
        temp = cursor.fetchall()
        return(HttpResponse(temp[0], content_type='application/json'))
+
+@csrf_exempt
+def getNews(request):
+       newsapi = NewsApiClient(api_key='72191ad24f2d45e68762b283fb05d711')
+
+       top_headlines = newsapi.get_top_headlines(sources='ars-technica')
+       articles = top_headlines['articles']
+
+       newsList = []
+       for i in range(len(articles)):
+              newsList.append({
+                     "Description":articles[i]['description'],
+                     "Title":articles[i]['title'],
+                     "ImgUrl":articles[i]['urlToImage'],
+                     "Link":articles[i]['url']
+              })
+              # desc.append(articles[i]['description'])
+              # news.append(articles[i]['title'])
+              # img.append(articles[i]['urlToImage'])
+
+       
+
+       return JsonResponse(newsList, safe=False)
+       

@@ -108,10 +108,6 @@ export class CatalougeComponent  implements OnInit {
     this.priceHigh = this.prices['upper'];
   }
 
-  showDetails(item : any){
-
-  }
-
   flipManbool(item : any){
     this.manCheckedList[item] = !this.manCheckedList[item];
   }

@@ -14,8 +14,30 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">News</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <ion-grid>
+      <ion-row >
+        <ion-col *ngFor="let item of theNews">
+          <ion-card style=" height: auto; width: 85%; text-align: center; border-radius: 5px; background-color: #fff; color: #000;">
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-img src="{{item.ImgUrl}}"></ion-img>
+                </ion-row>
+                <ion-row>
+                  <ion-title>{{item.Title}}</ion-title>
+                </ion-row>
+                <ion-row>
+                  <p>{{item.Description}}</p>
+                </ion-row>
+                <ion-row>
+                  <p>Via Ars Technica: <ion-button href="{{item.Link}}">Link</ion-button></p>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
 </ion-content>
