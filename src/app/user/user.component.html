@@ -14,8 +14,30 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">User</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid style="width: 75%; text-align: center;">
+    <ion-row style="text-align: center; align-items: center; align-self: center; align-content: center;">
+      <ion-col style="text-align: center; align-items: center; align-self: center; align-content: center;" [hidden]="userLoggedIn === false">
+        <ion-img style="width: 35%; height: auto; text-align: center; align-items: center; align-self: center; align-content: center;" src="https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row style="text-align: center;">
+      <ion-col [hidden]="userLoggedIn === false">
+        <ion-textarea [readonly]="true" label="Username" labelPlacement="floating" fill="outline"></ion-textarea>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col [hidden]="userLoggedIn === false"><ion-textarea [readonly]="true" label="First Name" labelPlacement="floating" fill="outline"></ion-textarea></ion-col>
+      <ion-col [hidden]="userLoggedIn === false"><ion-textarea [readonly]="true" label="Last Name" labelPlacement="floating" fill="outline"></ion-textarea></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col [hidden]="userLoggedIn === false"><ion-textarea [readonly]="true" label="Address" labelPlacement="floating" fill="outline"></ion-textarea></ion-col>
+      <ion-col [hidden]="userLoggedIn === false"><ion-textarea [readonly]="true" label="State" labelPlacement="floating" fill="outline"></ion-textarea></ion-col>
+      <ion-col [hidden]="userLoggedIn === false"><ion-textarea [readonly]="true" label="City" labelPlacement="floating" fill="outline"></ion-textarea></ion-col>
+      <ion-col [hidden]="userLoggedIn === false"><ion-textarea [readonly]="true" label="Zip Code" labelPlacement="floating" fill="outline"></ion-textarea></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col [hidden]="userLoggedIn === true"><ion-button (click)="userLogin()">Login</ion-button></ion-col>
+      <ion-col [hidden]="userLoggedIn === false"><ion-button (click)="userLogout()">Logout</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

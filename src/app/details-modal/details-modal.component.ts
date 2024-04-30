@@ -70,7 +70,8 @@ export class DetailsModalComponent {
     let h = localStorage.getItem('favCards');
     localStorage.removeItem('favCards');
     if(h == null){
-      localStorage.setItem('favCards', JSON.stringify(this.detail))
+      let j = [this.detail]
+      localStorage.setItem('favCards', JSON.stringify(j))
     }else{
       let i = JSON.parse(h)
       if(this.detail['ProductID'] in i){}
