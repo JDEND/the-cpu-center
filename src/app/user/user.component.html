@@ -40,4 +40,21 @@
       <ion-col [hidden]="userLoggedIn === false"><ion-button (click)="userLogout()">Logout</ion-button></ion-col>
     </ion-row>
   </ion-grid>
+  <br>
+  <br>
+  <ion-grid>
+    <ion-row><ion-title>Previous Orders</ion-title></ion-row>
+    <ion-row>
+      <ion-col *ngFor="let item of orders">
+        <ion-card>
+          <ion-card-content>
+            <p>{{item.OrderID}}</p>
+            <p>{{item.LineItem}}</p>
+            <p>{{item.ProductName}}</p>
+            <p>{{item.Quantity}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

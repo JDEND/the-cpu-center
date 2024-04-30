@@ -9,6 +9,7 @@ import { DetailsModalComponent } from '../details-modal/details-modal.component'
 import { defineCustomElement } from '@ionic/core/components/ion-modal.js';
 import { ModalController } from '@ionic/angular/standalone'
 import { Router } from '@angular/router';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-cart',
@@ -85,4 +86,16 @@ export class CartComponent  implements OnInit {
 
     const { data, role } = await detailsModal.onWillDismiss();
   }
+
+  placeOrder(){
+    $.ajax({
+      url: 'http://localhost:8000/queries/newOrder',
+      type: "POST",
+      dataType: "json",
+      data: JSON.stringify(this.currentCart),
+   });
+   this.currentCart = [];
+   sessionStorage.removeItem('currentCart')
+  }
+
 }

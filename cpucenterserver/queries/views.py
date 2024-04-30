@@ -85,4 +85,23 @@ def getNews(request):
        
 
        return JsonResponse(newsList, safe=False)
+
+@csrf_exempt
+def newOrder(request):
+       cursor.execute('EXEC [dbo].[sp_NewOrder] @customerNumber=10000, @shipAddress=10000, @tax=3.39')
+       cursor.execute('SELECT dbo.[fn_PlacedOrder]()')
+       temp = cursor.fetchall()
+
+       lines = json.loads(request.body)
+
+       for i in range(len(lines)):             
+              cursor.execute('EXEC [dbo].[sp_insertLineItem] @lineItem=' + str(i + 1)+', @itemID='+str(lines[i]['ProductID'])+', @orderID='+str(temp[0][0])+', @quantity='+str(lines[i]['PurchaseQuantity']))
        
+       return(HttpResponse('100'))
+
+@csrf_exempt
+def getUserOrders(request, userID):
+       cursor.execute('EXEC [dbo].[sp_userOrders] @userID=' + str(userID))
+       temp = cursor.fetchall()
+
+       return(HttpResponse(temp[0], content_type='application/json'))

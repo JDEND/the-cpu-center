@@ -10,5 +10,7 @@ urlpatterns = [
     path("newArrival", views.newArrival),
     path("sale", views.sale),
     path("lastChance", views.lastChance),
-    path("getNews", views.getNews)
+    path("getNews", views.getNews),
+    path("newOrder", views.newOrder),
+    path("getUserOrders/<userID>", views.getUserOrders),
 ]

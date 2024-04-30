@@ -56,7 +56,7 @@
           <ion-item>
             <ion-textarea [(ngModel)]="Total" [readonly]="true" label="Total" slot="end"></ion-textarea>
           </ion-item>
-          <ion-button>Checkout</ion-button>
+          <ion-button (click)="placeOrder()">Checkout</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>    
