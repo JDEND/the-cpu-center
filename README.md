@@ -85,4 +85,11 @@ Download repository, install dependancies
 ```bash
   npm i
 ```
+## Deploy Project
+- Ionic
+-   Navigate to ..\Website\thecpucenter and run command ```npx ng serve --open --host=0.0.0.0 --port=8101 --configuration=production```
+- Django Server
+-   Navigate to ..\Website\thecpucenter\cpucenterserver and run command ```python manage.py runserver```
+- SQL server
+-   Run Database create script, and start database from SQL server management studio
     
