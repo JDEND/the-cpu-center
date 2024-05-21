@@ -25,31 +25,8 @@ The CPU Center represents a culmination of knowledge learned through my Python p
 
 ## Demo
 
-Insert gif or link to demo
+Demo coming soon
 
-
-## Dependancies
-
-- Install SQL Server    
-   - ```Download SQL Server Installation from: https://www.microsoft.com/en-us/  sql-server/sql-server-downloads```
-
-- Install Python
-    - ```If using windows, you can install from microsoft store, otherwise install from https://www.python.org/downloads/```
-
-- Install Django
-   - ``` python -m pip install Django ```
-
-- Install Node.js
-    - ```https://nodejs.org/en```
-
-- Install Angular
-    - ```npm install -g @angular/cli```
-
-- Install Ionic
-    - ```npm install -g @ionic/cli```
-
-- Install NewsAPI
-    - ```pip install newsapi-python```
 
 ## FAQ
 
@@ -60,36 +37,51 @@ Insert gif or link to demo
 - Reactive, mobile first, design
 - Login/Logout system
 - Cataloug filtering/search system
-- 
-
+#### The Features section is still being expanded, please check back later
 
 ## Feedback
 
 If you have any feedback, please reach out to me at GV6507@wayne.edu
 
-
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
+## Prerequisites
+Ensure you have the following installed:
 
-## Lessons Learned
+   - Node.js (version 14.x or higher)
+   - npm (Node Package Manager)
+   - Angular CLI (globally installed)
+   - Ionic CLI (globally installed)
+   - Git
 
-What did you learn while building this project? What challenges did you face and how did you overcome them?
+### Step 1: Install Node.js and npm
 
+Download and install [Node.js](https://nodejs.org/en) from the official website. npm is included with Node.js.
 
-## Installation
+### Step 2: Install Angular CLI
 
-Download repository, install dependancies
+Open a terminal or command prompt and run:<br>
 
-```bash
-  npm i
-```
-## Deploy Project
-- Ionic
--   Navigate to ..\Website\thecpucenter and run command ```npx ng serve --open --host=0.0.0.0 --port=8101 --configuration=production```
-- Django Server
--   Navigate to ..\Website\thecpucenter\cpucenterserver and run command ```python manage.py runserver```
-- SQL server
--   Run Database create script, and start database from SQL server management studio
-    
+```npm install -g @angular/cli```
+
+### Step 3: Install Ionic CLI
+
+Run the following command to install the Ionic CLI globally:<br>
+
+```npm install -g @ionic/cli```
+
+### Step 4: Navigate into the Project Directory
+
+```cd the-cpu-center```
+
+### Step 5: Download the required packages
+
+Download and install the required packages to your system by running the following command in the project directory<br>
+```npm i```
+
+### Step 6: Serve the Application Locally
+
+To run the project, serve it locally by running the following command:<br>
+```ionic serve```
