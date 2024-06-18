@@ -1,3 +1,4 @@
+This was the state of the project when it was submitted for grading, and does not accurately reflect the current state of the project. This is kept for refrence, and should not be used for further development.
 
 # The Cpu Center
 
